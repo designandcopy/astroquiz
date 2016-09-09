@@ -1,0 +1,26 @@
+{
+  "name": "toms-gulp-boilerplate",
+  "description": "Boilerplate including Gulp, LibSass, Susy",
+  "main": "index.js",
+  "authors": [
+    "Tom Nemec"
+  ],
+  "license": "ISC",
+  "homepage": "http://tomnemec.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "^2.2.12",
+    "normalize-scss": "normalize.scss#^4.2.1"
+  },
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.0",
+    "handlebars": "^4.0.5"
+  }
+}

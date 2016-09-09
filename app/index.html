@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AstroQuiz</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
+	</script>
+	<script src="js/handlebars.min.js" charset="utf-8" type="text/javascript">
+	</script>
+	<script src="js/handlebars-helpers.js" charset="utf-8" type="text/javascript">
+	</script>
+	<link rel="stylesheet" href="css/main.css" media="screen" title="core" charset="utf-8">
+	<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD/znsA////AP+tQgAApQAAGBgYAP+1SgD/1oQA/8ZjAP/WjAD/tVIAAGMAAP+tOQD/vVoA/85zAAAAAAAAAAAAEREURERBERERFEIiIrRBERFJmZqlIqQRFJzKOqmVo0EUzKOszJlaQUx6M6d3yZqkR306rdd8lSRH0KZgDXzJpEfQpmANfMmkRwo6iqB3ozRHozOqoHfKNBQzo6Zgp8pBFKBqMA06yUERTQCqp3yUEREUR3d3xEEREREURERBERH4HwAA4AcAAMADAACAAQAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAOAHAAD4HwAA"
+					rel="icon" type="image/x-icon" />
+</head>
+
+<body>
+
+	<!--=============================================>>>>>
+	= 🛠 Handlebars Template for Game View =
+	===============================================>>>>-->
+
+	<script id="gamecontainer" type="text/x-handlebars-template">
+		{{#each gamecontent}}
+		<div class="astro-question">
+			<img class="astro-image" src="images/{{image}}" />
+			<h2>Question {{math @key "+" 1}}:</h2>
+			<h3>{{question}}</h3>
+			<div class="answers">
+				{{#each choices}}<span class="answer answer-active">{{this}}</span>{{/each}}
+			</div>
+		</div>
+		{{/each}}
+	</script>
+
+	<!--=============================================>>>>>
+	= 🛠 Handlebars Template for Scoreboard =
+	===============================================>>>>-->
+
+	<script id="scoretemplate" type="text/x-handlebars-template">
+		<div class="astro-scoreboard">
+			<h2>Your results</h2>
+			<div class="results">Hey <strong><span class="playername-placeholder"></span></strong>, you got <span class="answers-correct"></span> out of <span class="questions-total"> </span> questions right!</div>
+			<div class="astro-results-percentage">
+				<div class="astro-results-percentage-bar"></div>
+			</div>
+		</div>
+	</script>
+
+	<!--=============================================>>>>>
+	= Modal for Username Login =
+	===============================================>>>>-->
+
+	<div class="astro-modal astro-modal-login">
+		<p class="name">Hi there, please enter your <strong>name</strong> to continue:</p>
+		<input type="text" class="astro-username-input"></input>
+		<a href="#" id="username-submit" class="astro-username-submit">Submit</a>
+	</div>
+	</div>
+
+	<!--=============================================>>>>>
+	= Player Meta =
+	===============================================>>>>-->
+
+	<div class="astro-meta blur">
+		<div class="astro-meta-item astro-playername">Player: <span class="playername-placeholder"></span></div>
+		<div class="astro-meta-item astro-score">Score: <span class="gamescore"></span></div>
+		<div class="astro-meta-item astro-reset"><a class="reset" href="#">Reset</a>
+		</div>
+	</div>
+
+	<!--=============================================>>>>>
+	= Game View rendered here =
+	===============================================>>>>-->
+
+	<div id="quizcontainer" class="blur"></div>
+
+	<script src="js/main.js">
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+/*=============================================>>>>>
+= main.scss - Imports & Setup =
+===============================================>>>>>*/
+@import "partials/animation";
+
+/*=============================================>>>>>
+= Variables & Colors =
+===============================================>>>>>*/
+
+// Colors
+$background: #052736;
+$blue: #2688A0;
+$off-white: #F2F2F2;
+$grey: #40525B;
+$red: #F97070;
+$green: #7FB685;
+
+// Breakpoints
+$break-desktop: 680px;
+
+@mixin desktop {
+	@media (min-width: #{$break-desktop}) {
+		@content;
+	}
+}
+
+/*=============================================>>>>>
+= Basic Elements =
+===============================================>>>>>*/
+
+html {
+	box-sizing      : border-box;
+	background-color: $background;
+	font-family     : sans-serif;
+}
+
+h3 {
+	font-weight: 300;
+}
+
+.answer,
+a {
+	color          : $off-white;
+	text-decoration: none;
+	cursor         : pointer;
+}
+
+input {
+	font-size: 16px;
+}
+
+#gamecontainer {
+	overflow: hidden;
+}
+
+/*=============================================>>>>>
+= Components =
+===============================================>>>>>*/
+
+.astro-question {
+	display         : block;
+	overflow        : hidden;
+	margin          : 5px auto 15px;
+	padding         : 15px;
+	max-width       : 90%;
+	border-radius   : 0 50px 0 0;
+	background-color: $blue;
+	color           : white;
+	@include desktop {
+		max-width: 750px;
+	}
+	h2 {
+		@include desktop {
+			font-size: 3em;
+			line-height: 1.6rem;
+		}
+	}
+	h3 {
+		@include desktop {
+			padding: 0 5px;
+		}
+	}
+}
+
+.astro-image {
+	position     : relative;
+	display      : block;
+	margin       : 0 auto;
+	padding      : 10px;
+	width        : auto;
+	height       : 150px;
+	border-radius: 999px;
+	background   : linear-gradient(to right, lighten($blue, 5%), darken($blue, 5%));
+	box-shadow   : 5px 0 8px transparentize(lighten($blue, 10%), .6);
+	@include desktop {
+		float: right;
+		height: 250px;
+		margin-left: 50px;
+	}
+}
+
+.astro-meta {
+	overflow     : hidden;
+	margin-bottom: 10px;
+	color        : $off-white;
+	text-align   : center;
+	font-size    : 18px;
+
+	.astro-meta-item {
+		display     : inline-block;
+		margin-right: 1em;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+.answers {
+	margin: 0 auto;
+}
+
+.answer {
+	display         : inline-block;
+	margin          : 0 5px 5px;
+	padding         : 10px 15px;
+	border-radius   : 3px;
+	background-color: desaturate(lighten($blue, 10%), 10%);
+	color           : white;
+	transition      : all .2s;
+
+}
+
+/*=============================================>>>>>
+= Modal / User Login =
+===============================================>>>>>*/
+
+.astro-modal {
+	position   : fixed;
+	top        : 0;
+	left       : 0;
+	z-index    : 9000;
+	padding-top: 50px;
+	width      : 100%;
+	height     : 100%;
+	background : transparentize($grey, .1);
+	color      : white;
+	text-align : center;
+
+	text-size  : 18px;
+}
+
+.astro-username {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.astro-username-submit {
+	margin-left  : 10px;
+	padding      : 4px 8px;
+	border       : 1px solid white;
+	border-radius: 3px;
+	color        : white;
+	font-size    : 14px;
+}
+
+/*=============================================>>>>>
+= Game Over / Scoreboard =
+===============================================>>>>>*/
+
+.astro-scoreboard {
+	padding         : 15px;
+	border-radius   : 5px;
+	text-align      : center;
+	color           : $off-white;
+	background-color: lighten($blue, 0);
+
+	.astro-results-percentage,
+	.astro-results-percentage-bar {
+		border-radius: 5px;
+	}
+
+	.astro-results-percentage {
+		background-color: $green;
+		margin-top      : 15px;
+		margin-left     : auto;
+		margin-right    : auto;
+		padding         : 5px;
+		width           : 80%;
+	}
+
+	.astro-results-percentage-bar {
+		display         : block;
+		width           : 0;
+		height          : 15px;
+		background-color: darken($green, 30%);
+	}
+
+}
+
+/*=============================================>>>>>
+= Effects =
+===============================================>>>>>*/
+
+.blur {
+	filter: blur(40px); // does not work in IE Edge
+	transform: translate3d(0,0,0);
+}
+
+.answer-active:hover {
+	transform: rotateZ(10deg);
+}
+
+.answer-correct {
+	background-color: $green;
+	opacity         : 1 !important;
+}
+
+.answer-wrong {
+	background-color: $red;
+	opacity         : 1 !important;
+}

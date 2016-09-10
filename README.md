@@ -4,10 +4,6 @@ A multiple-choice quiz demo app.
 
 ## Build & Develop
 
-Install gulp globally:
-
-`npm i -g gulp`
-
 Install the dependencies:
 
 `npm i`
